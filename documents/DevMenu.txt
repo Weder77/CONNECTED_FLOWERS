@@ -1,0 +1,9 @@
+Site plantes : tela-botanica.org
+
+Mes Plantes :
+ - Ma Plante (actuelle) :
+	
+ - Historique des plantes :
+
+Les Plantes :
+~30 plantes avec Nom + Description + Photos + Lum. max/min + Hum. max/min + Temp. max/min
