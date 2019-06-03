@@ -81,11 +81,6 @@ int main()
   int connected = 0;
   int ID;
 
-/* Connect to database */
-if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0)) {
-  fprintf(stderr, "%s\n", mysql_error(conn));
-  exit(1);
-} 
 else {
     accueil:
     printf("\e[0;33m=== CONNEXION ===\e[0m\n\n");
@@ -187,7 +182,11 @@ else {
             printf("\n\n\e[0;31mLes 2 mots de passe ne correspondent pas.\e[0m \n\n\n");
             goto inscription;
           }
-
+          /* Connect to database */
+          if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0)) {
+            fprintf(stderr, "%s\n", mysql_error(conn));
+            exit(1);
+          } 
           char query_string[] = {
              "INSERT INTO UTILISATEUR VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '2019-01-01', NULL)" 
           };
