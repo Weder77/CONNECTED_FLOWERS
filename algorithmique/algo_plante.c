@@ -197,6 +197,9 @@ int main()
             fprintf(stderr, "£££ - %s\n", mysql_error(conn));
             exit(1);
           }
+          /* close connection */
+          mysql_free_result(res);
+          mysql_close(conn);
         }
 
         printf("\e[0;32m=== Votre compte a ete cree avec succes, merci de vous connecter pour acceder à l'application ===\e[0m\n\n");
@@ -1104,9 +1107,9 @@ int main()
         printf("Vous n'avez pas rentre un nombre correct. Retour au menu.");
         break;
       }
-      
+
       printf("\n\n");
-      
+
       return 0;
     }
 
