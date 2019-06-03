@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <mysql.h>
 
@@ -38,7 +39,6 @@ int temperature_atmospherique_plante;
 
 int main()
 {
-
   // MYSQL set
   MYSQL *conn;
   MYSQL_RES *res;
@@ -46,10 +46,11 @@ int main()
 
   char *server = "localhost";
   char *user = "root";
-  char *password = "toor!12"; /* set me first */
+  char *password = ""; /* set me first */
   char *database = "ConnectF";
 
   conn = mysql_init(NULL);
+
 
   // Variable set
   char nom[100]; // nom utilisateur
@@ -78,6 +79,7 @@ int main()
   int choix_plante_2; // choix des plantes a planter
   int valider_plantage; // valider dans le menu des plantes 
   int connected = 0;
+  int ID;
 
 /* Connect to database */
 if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0)) {
@@ -115,10 +117,14 @@ else {
           /* Connexion */
           while ((row = mysql_fetch_row(res)) != NULL){
             if ((strcmp(row[3],email)==0) && (strcmp(row[5],mdp_test)==0)){
-              nom = row[2];
-              prenom = row[3];
-              email = row[4];
-              date = row[5];
+              strcpy(nom, row[2]);
+              strcpy(prenom, row[2]);
+              strcpy(email, row[3]); // strcpy(date, row[4]); -> C'est pas un string dans la base donc erreur à corriger
+              printf("%s\n", row[4]);
+              printf("%s\n", row[0]);
+              ID = row[0];
+              printf("%d\n", ID);
+              
               
               connected=1;
 
@@ -239,7 +245,7 @@ else {
               modifier_compte:
               printf("\e[0;33m=== MODIFIER MON COMPTE ===\e[0m\n\n");
               printf("Quelles informations souhaites-tu modifier ?\n");
-              printf("Voici tes informations :\n1. Nom : %s.\n2. Prenom : %s.\n3. Date de naissance : %d.\n4. Email : %s.\n\n", nom, prenom, date, email);
+              printf("Voici tes informations :\n1. Nom : %s.\n2. Prenom : %s.\n3. Date de naissance : %.s\n4. Email : %s.\n\n", nom, prenom, date, email);
               printf("5. Retour\n");    
               printf("\nVotre choix ? ");
               scanf("%d", &choix_menu_compte_2);
@@ -416,6 +422,16 @@ else {
              }
              else if (valider_plantage==1)
              {
+              char query_string[] = {
+                 "UPDATE UTILISATEUR SET ID_PLANTE=2 WHERE ID_UTIL=%S" 
+              };
+              sprintf(buf, query_string, row[0]);
+
+              if (mysql_query(conn,buf)) 
+              {
+                fprintf(stderr, "£££ - %s\n", mysql_error(conn));
+                exit(1);
+              }
               printf("Bonne chance ! Toutes les informations de la plante sont ici :).\n\n\n");
               goto plante_choix;
              }
