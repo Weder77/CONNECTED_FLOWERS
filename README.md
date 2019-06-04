@@ -49,6 +49,7 @@ $ mysql.server start
 $ cd merise
 $ mysql -uroot
 $ CREATE DATABASE ConnectF;
+$ use ConnectF;
 $ exit
 $ mysql source ConnectF < uf_dev.SQL
 ```
