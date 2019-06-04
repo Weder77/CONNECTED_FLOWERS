@@ -9,7 +9,8 @@
 it is a school project designed over a year. The subject being imposed on us, here is what we did. The members of the group are : <br>
 &nbsp;&nbsp; - GRELET Théo <br />
 &nbsp;&nbsp; - JEAN-CHARLES Dany<br />
-&nbsp;&nbsp; - RAMOS LAGE Clément (Arrived on June 4th ) <br />
+&nbsp;&nbsp; - LECLERC Loris (Leave on April 2nd)<br />
+&nbsp;&nbsp; - RAMOS LAGE Clément (Arrived on June 4th) <br />
 
 Returns made: <br />
 &nbsp; &nbsp; - Proceeding from 1st to 25th of January: Algo, initial analysis <br />
@@ -22,6 +23,7 @@ Returns made: <br />
 Project is created with:
 * C
 * Sublim Text 3
+
 	
 ## Setup
 To run this project, install it locally using npm:
