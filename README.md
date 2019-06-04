@@ -46,7 +46,11 @@ Mysql installation :
 ```
 $ brew install mysql
 $ mysql.server start
+$ cd merise
 $ mysql -uroot
+$ CREATE DATABASE ConnectF;
+$ exit
+$ mysql source ConnectF < uf_dev.SQL
 ```
 
 Next, launch algo_plante.c 
