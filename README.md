@@ -1,4 +1,4 @@
-# Projet DEV - GROUPE N°07
+# DEV Project - GROUPE N°07
 
 ## Table of contents
 * [General info](#general-info)
@@ -12,10 +12,10 @@ it is a school project designed over a year. The subject being imposed on us, he
 &nbsp;&nbsp;RAMOS LAGE Clément (Arrived on June 4th ) <br />
 
 Returns made: <br />
-& nbsp; & nbsp; - Proceeding from 1st to 25th of January: Algo, initial analysis <br />
-& nbsp; & nbsp; - Rendering 2 - February 28: graphical interface, circulation in pages <br />
-& nbsp; & nbsp; - Rendering 3 - 2 April: Modeling <br />
-& nbsp; & nbsp; - Rendering 4 - 3 May: database + query <br />
+&nbsp; &nbsp; - Proceeding from 1st to 25th of January: Algo, initial analysis <br />
+&nbsp; &nbsp; - Rendering 2 - February 28: graphical interface, circulation in pages <br />
+&nbsp; &nbsp; - Rendering 3 - 2 April: Modeling <br />
+&nbsp; &nbsp; - Rendering 4 - 3 May: database + query <br />
 
 
 ## Technologies
