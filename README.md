@@ -24,7 +24,11 @@ Project is created with:
 * C
 * Mysql Api
 * Library in C : 
-	* <stdio.h> / <stdlib.h> / <string.h> / <unistd.h> / <mysql.h>
+	* <stdio.h>
+	* <stdlib.h>
+	* <string.h>
+	* <unistd.h>
+	* <mysql.h>
 
 	
 ## Setup
