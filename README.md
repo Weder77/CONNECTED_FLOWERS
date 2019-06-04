@@ -29,7 +29,8 @@ Project is created with:
 To run this project, install it locally using npm:
 
 ```
-$ cd ../lorem
-$ npm install
-$ npm start
+$ cd algorithmique
+$ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+$ gcc -o ter `mysql_config --cflags` algo_plante.c `mysql_config --libs` 
+$ ./ter
 ```
