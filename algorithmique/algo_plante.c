@@ -4,17 +4,17 @@
 /*       <algo_plante.c>                          __     __                   */
 /*                                                \ \   / /                   */
 /*   By: Dany JEAN-CHARLES (Weder77)               \ \_/ /                    */
-/*                                                  \   /                     */
+/*       & Clément RAMOS LAGE (MENT3)               \   /                     */
 /*   Created: 22/02/19 by Weder77                    | |                      */
-/*   Updated: 26/02/19 by Weder77                    |_|Nov Informatique      */
+/*   Updated: 03/06/19 by Weder77                    |_|nov Informatique      */
 /*                                                                            */
 /* ************************************************************************** */     
-
+//Salut à tous les amis c david !
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <mysql.h>
+#include <mysql.h> // Cette erreur est normale
 
 // On recupere les donnees de la plante depuis la bdd
 int humidite_max;
@@ -94,9 +94,14 @@ int main()
       case 1:
       connexion:
           /* send SQL query */
-      if (mysql_query(conn, "select * from UTILISATEUR")) {
+      if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0)) {
         fprintf(stderr, "%s\n", mysql_error(conn));
         exit(1);
+      } else {
+        if (mysql_query(conn, "select * from UTILISATEUR")) {
+          fprintf(stderr, "%s\n", mysql_error(conn));
+          exit(1);
+        }
       }
 
       res = mysql_use_result(conn);
@@ -114,7 +119,7 @@ int main()
         if ((strcmp(row[3],email)==0) && (strcmp(row[5],mdp_test)==0)){
           strcpy(nom, row[2]);
           strcpy(prenom, row[2]);
-              strcpy(email, row[3]); // strcpy(date, row[4]); -> C'est pas un string dans la base donc erreur à corriger
+              strcpy(email, row[3]); // strcpy(date, row[4]); -> C'est pas un string dans la base donc erreur à corriger CLEMENT VA CORRIGER
               printf("%s\n", row[4]);
               printf("%s\n", row[0]);
               ID = row[0];
@@ -187,10 +192,12 @@ int main()
             fprintf(stderr, "%s\n", mysql_error(conn));
             exit(1);
           } else {
+            printf(" Pourquoi il est vide ici ???? %s\n",prenom);
             char query_string[] = {
              "INSERT INTO UTILISATEUR VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '2019-01-01', NULL)" 
            };
            sprintf(buf, query_string, prenom, nom, email, date, mdp);
+           printf("%s\n",buf);
 
            if (mysql_query(conn,buf)) 
            {
@@ -1148,13 +1155,3 @@ int main()
       printf("29. Aneth \n");
       printf("30. Pamplemoussier \n\n");
     }
-
-
-
-
-
-
-
-
-
-
