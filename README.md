@@ -38,6 +38,7 @@ $mysql -uroot
 Next, launch algo_plante.c 
 
 ```
+$git clone https://github.com/Weder77/UF_DEV.git
 $ cd algorithmique
 $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 $ gcc -o ter `mysql_config --cflags` algo_plante.c `mysql_config --libs` 
