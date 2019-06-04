@@ -7,9 +7,9 @@
 
 ## General info
 it is a school project designed over a year. The subject being imposed on us, here is what we did. The members of the group are : <br>
-&nbsp;&nbsp;GRELET Théo <br />
-&nbsp;&nbsp;JEAN-CHARLES Dany<br />
-&nbsp;&nbsp;RAMOS LAGE Clément (Arrived on June 4th ) <br />
+&nbsp;&nbsp; - GRELET Théo <br />
+&nbsp;&nbsp; - JEAN-CHARLES Dany<br />
+&nbsp;&nbsp; - RAMOS LAGE Clément (Arrived on June 4th ) <br />
 
 Returns made: <br />
 &nbsp; &nbsp; - Proceeding from 1st to 25th of January: Algo, initial analysis <br />
