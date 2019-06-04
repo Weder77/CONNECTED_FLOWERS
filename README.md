@@ -13,16 +13,17 @@ it is a school project designed over a year. The subject being imposed on us, he
 &nbsp;&nbsp; - RAMOS LAGE Clément (Arrived on June 4th) <br />
 
 Returns made: <br />
-&nbsp; &nbsp; - Proceeding from 1st to 25th of January: Algo, initial analysis <br />
-&nbsp; &nbsp; - Rendering 2 - February 28: graphical interface, circulation in pages <br />
-&nbsp; &nbsp; - Rendering 3 - 2 April: Modeling <br />
-&nbsp; &nbsp; - Rendering 4 - 3 May: database + query <br />
+&nbsp; &nbsp; - Rendering 1 - January 25 : Algo, initial analysis <br />
+&nbsp; &nbsp; - Rendering 2 - February 28 : graphical interface, circulation in pages <br />
+&nbsp; &nbsp; - Rendering 3 - April 2 : Modeling <br />
+&nbsp; &nbsp; - Rendering 4 - May 3 : database + query <br />
 
 
 ## Technologies
 Project is created with:
 * C
-* Sublim Text 3
+* Mysql Api
+* Library stdio.h <stdio.h> / <stdlib.h> / <string.h> / <unistd.h> / <mysql.h>
 
 	
 ## Setup
