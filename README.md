@@ -23,7 +23,8 @@ Returns made: <br />
 Project is created with:
 * C
 * Mysql Api
-* Library stdio.h <stdio.h> / <stdlib.h> / <string.h> / <unistd.h> / <mysql.h>
+* Library in C : 
+	* <stdio.h> / <stdlib.h> / <string.h> / <unistd.h> / <mysql.h>
 
 	
 ## Setup
