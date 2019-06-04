@@ -26,7 +26,16 @@ Project is created with:
 
 	
 ## Setup
-To run this project, install it locally using npm:
+To run this project, you need to install mysql with brew.
+
+```
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" // Ignore if you have already brew
+$ brew install mysql
+$ mysql.server start
+$mysql -uroot
+```
+
+Next, launch algo_plante.c 
 
 ```
 $ cd algorithmique
