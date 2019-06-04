@@ -34,11 +34,19 @@ Project is created with:
 ## Setup
 To run this project, you need to install mysql with brew.
 
+Brew installation :
+
 ```
-$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" // Ignore if you have already brew
+$ // Ignore this step if you have already brew
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+```
+
+Mysql installation :
+
+```
 $ brew install mysql
 $ mysql.server start
-$mysql -uroot
+$ mysql -uroot
 ```
 
 Next, launch algo_plante.c 
