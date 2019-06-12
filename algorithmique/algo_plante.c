@@ -9,7 +9,12 @@
 /*   Updated: 03/06/19 by Weder77                    |_|nov Informatique      */
 /*                                                                            */
 /* ************************************************************************** */     
+<<<<<<< HEAD
 //Salut à tous les amis c david !
+=======
+
+
+>>>>>>> 5baa943ee64a54d74a8a1aac0ad6aa4a09b4e383
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
