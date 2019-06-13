@@ -49,9 +49,11 @@ $ mysql.server start
 $ cd merise
 $ mysql -uroot
 $ CREATE DATABASE ConnectF;
+$ exit
+$ mysql -uroot ConnectF < uf_dev.SQL
+$ mysql -uroot
 $ use ConnectF;
 $ exit
-$ mysql source ConnectF < uf_dev.SQL
 ```
 
 Next, launch algo_plante.c 
