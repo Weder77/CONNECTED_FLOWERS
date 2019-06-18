@@ -31,7 +31,7 @@ Project is created with:
 	* <mysql.h>
 
 	
-## Setup
+## Setup Unix / MacOS
 To run this project, you need to install mysql with brew.
 
 Brew installation :
@@ -65,3 +65,4 @@ $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 $ gcc -o ter `mysql_config --cflags` algo_plante.c `mysql_config --libs` 
 $ ./ter
 ```
+
