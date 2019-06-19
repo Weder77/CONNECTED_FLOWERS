@@ -6,16 +6,16 @@
 /*   By: Dany JEAN-CHARLES (Weder77)               \ \_/ /                    */
 /*                                                  \   /                     */
 /*   Created: 22/02/19 by Weder77                    | |                      */
-/*                                                   |_|Nov Informatique      */
+/*   Updated: 26/02/19 by Weder77                    |_|Nov Informatique      */
 /*   Updated: 10/06/19 by MENT3                                               */
 /*                                                                            */
 /* ************************************************************************** */     
 
 
 /*
-
 SOMMAIRE DU PROGRAMME ('contrôle + F' ou 'commande + F' pour rechercher un élément directement) :
   - 1.0.VARIABLES
+  - 1.1.1.ACCUEIL
   - 1.1.CONNEXION
   - 1.2.INSCRIPTION
   - 2.0.MENU 
@@ -26,10 +26,7 @@ SOMMAIRE DU PROGRAMME ('contrôle + F' ou 'commande + F' pour rechercher un él�
   - 3.2.INFOS PLANTE
   - 4.0.NOTIFICATIONS
   - 5.0.CONTACT
-
-
 */
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -61,7 +58,8 @@ int temperature_atmospherique_plante;
 int main()
 {
   /* 1.0.VARIABLES */
-  MYSQL conn; //MYSQL set
+  // MYSQL set
+  MYSQL conn;
 
   char *server = "localhost";
   char *user = "root";
@@ -69,21 +67,25 @@ int main()
   char *database = "ConnectF";
 
   mysql_init(&conn);
-  char buf[1024] = {}; //buffer -> requetes
 
 
-  /* Variables pour l'inscription */
-  char nom[100];
-  char prenom[100]; 
-  int date[10]; /
-  char email[100]; 
-  char mdp[100]; 
+  // Variable set
+  char nom[100]; // nom utilisateur
+  char prenom[100]; // prenom utilisateur
+
+  /* Variables de configuration pour la date de naissance*/
+  int jour;
+  int mois;
+  int annee;
+  int date[10]; // Date qui va être insert dans la db
+  char date_naissance[10];
+
+  char email[100]; // mail utilisateur
+  char mdp[100]; // mdp utilisateur
   char mdp_verif[100]; // verif du mdp quand on cree un compte
   char mdp_test[100]; // verif du mdp quand on se connecte
   char mdp_change[100]; // verif poru changer le mdp
-
-
-  /* Variables du programme */
+  char buf[1024] = {}; //buffer -> requetes
   char plante[3]; //ID plante depuis la base
   char probleme[500]; // en cas de pb, message de l'utilisateur qui est envoye
   char id_util[3]; //user id
@@ -105,10 +107,9 @@ int main()
   int connected = 0;
   system("clear");
 
-
-  /*  1.ACCUEIL  */
   accueil:
-  printf("\e[0;33m=== ACCUEIL ===\e[0m\n\n");
+  /* 1.1.1.ACCUEIL */
+  printf("\e[0;33m=== CONNEXION ===\e[0m\n\n");
   printf("1. Se connecter\n");
   printf("2. S'inscrire\n");
   printf("\nVotre choix ? ");
@@ -117,9 +118,8 @@ int main()
     switch (choix_menu_connexion) // switch qui gere le menu de connexion
     {
       case 1:
-      /*  1.1.CONNEXION  */
       connexion:
-
+      /* 1.1.CONNEXION */
       printf("\e[0;33m=== CONNEXION ===\e[0m\n\n");
 
       printf("Entrez votre email :\n"); 
@@ -201,8 +201,8 @@ int main()
           }
           break;
           case 2:
-          /* 1.2.INSCRIPTION */
           inscription:
+          /* 1.2.INSCRIPTION */
           printf("\e[0;33m=== INSCRIPTION ===\e[0m\n\n");
           printf("Entrez votre prenom :\n"); 
           scanf("%s",&prenom);
@@ -212,21 +212,22 @@ int main()
 
           printf("Entrez votre date de naissance : (Format : AAAA-MM-JJ sans les tirets)\n");
           scanf("%s", &date);
-
-
+ 
           printf("Entrez votre email :\n"); 
           scanf("%s",&email);
 
           printf("Entrez votre mot de passe :\n");
           system("stty -echo");
           scanf("%s",&mdp);
-
           system("stty echo");
+
           printf("Confirmez votre mot de passe :\n");
           system("stty -echo");
           scanf("%s",&mdp_verif);
           system("stty echo");
 
+          // printf("Entrez votre âge :\n"); 
+          // scanf("%d",&age);
           niveau_expertise_plante:
           printf("Votre niveau d'epxertise avec les plantes ?\n1/ Debutant\n2/ Intermediaire\n3/ Expert\n\n"); 
           scanf("%d",&niveau_expertise_plante);
@@ -247,7 +248,7 @@ int main()
 
          if(mysql_real_connect(&conn, server, user, password, database,0,NULL,0))
          {
-              /* Add to database */
+              /* Init */
 
           MYSQL_RES *res = NULL;
           MYSQL_ROW row;
@@ -284,26 +285,29 @@ int main()
           }
 
 
-          /* 2.0.MENU */
+
           menu:
+          /* 2.0.MENU */
           system("clear");
           printf("\e[0;33m=== MENU ===\e[0m\n\n");
           printf("1. Gerer mon compte\n");
-          printf("2. Plante actuelle\n"); 
-          printf("3. Historique des plantes\n"); 
+          printf("2. Plante actuelle\n"); // fini
+          printf("3. Historique des plantes\n"); // fini
           printf("4. Voir toutes les plantes\n");
-          printf("5. Notifications\n"); 
-          printf("6. Contact\n");
-          printf("7. Se deconnecter\n"); 
+          printf("5. Notifications\n"); // fini 
+          printf("6. Contact\n"); // fini
+          printf("7. Se deconnecter\n"); // fini
           printf("\nVotre choix ? ");
-          scanf("%d \n", &choix_menu);
+          scanf("%d", &choix_menu);
+
+          printf("\n");
 
 
     switch (choix_menu) // Menu principal
     {
       case 1:
-      /* 2.1.COMPTE */
       compte:
+      /* 2.1.COMPTE */
       printf("\e[0;33m=== MON COMPTE ===\e[0m\n\n");
       printf("Bonjour %s !\n",prenom);
       printf("Voici tes informations :\nNom : %s\nprenom : %s\nDate de naissance : %s\nEmail : %s\n\n", nom, prenom, date, email);
@@ -316,11 +320,11 @@ int main()
       switch (choix_menu_compte)
       {
         case 1:
-        /* 2.2.MODIFIER COMPTE */
         modifier_compte:
+        /* 2.2.MODIFIER COMPTE */
         if(mysql_real_connect(&conn, server, user, password, database,0,NULL,0)){
 
-          /* Init */
+                  /* Init */
           MYSQL_RES *res = NULL;
           MYSQL_ROW row;
 
@@ -555,8 +559,8 @@ int main()
               }
               break;
               case 2:
-              /* 3.0.MA PLANTE */
               ma_plante:
+              /* 3.0.MA PLANTE */
               if (strcmp(plante, "0") == 0){
                 printf("Vous n'avez selectionné aucune plante.\n");
                 printf("1. Selectionner une plante\n");
@@ -617,13 +621,13 @@ int main()
 
             break;
             case 3:
-            /* 3.1.HISTORIQUE PLANTE */
             printf("Voici l'historique de vos plantes :\n");
             printf("(recupere depuis la bdd les plantes connectees -> affichage des noms des plantes\n");
             goto menu;
             break;
             case 4:
             plante_choix: 
+            /* 3.1.HISTORIQUE PLANTE */
             printf("Voici toutes les plantes que vous pouvez planter :\n");
             affichage_plantes();
             printf("Souhaitez-vous planter une nouvelle plante ?\n1. Oui\n2. Non (retour)\n");
@@ -771,8 +775,8 @@ int main()
                 printf("Nombre choisis incorrect.\n");
                 goto plantage;
               } // fin du switch choix_plante_2
-              /* 3.2.INFOS PLANTE  */
               info_plante:
+              /* 3.2.INFOS PLANTE */
               if(mysql_real_connect(&conn, server, user, password, database,0,NULL,0)){
 
                     /* Init */
@@ -859,73 +863,71 @@ int main()
         break; // fin case 4
 
     /*           FIN DES CHOIX DE PLANTES             */
-
-
         case 5:
-          notifications:
-          /* 4.0.NOTIFICATIONS */ 
-          printf("\e[0;33m=== NOTIFICATIONS ===\e[0m\n\n");
-          if (notifs_desactivee==0)
-          {
-            printf("Parametre des notifications actuels : toutes les %d heures.\n\n",choix_notifs_heures);        
-          }
-          else if (notifs_desactivee==1)
-          {
-            printf("Parametre des notifications actuels : desactivees.\n\n",choix_notifs_heures);        
-          }
-          printf("1. Desactiver les notifications.\n");
-          printf("2. Notification toutes les X heures.\n");
-          printf("3. Retour.\n");
-          scanf("%d",&choix_notifs);
-          if (choix_notifs<1 || choix_notifs>3)
+        notifications:
+        /* 4.0.NOTIFICATIONS */
+        printf("\e[0;33m=== NOTIFICATIONS ===\e[0m\n\n");
+        if (notifs_desactivee==0)
+        {
+          printf("Parametre des notifications actuels : toutes les %d heures.\n\n",choix_notifs_heures);        
+        }
+        else if (notifs_desactivee==1)
+        {
+          printf("Parametre des notifications actuels : desactivees.\n\n",choix_notifs_heures);        
+        }
+        printf("1. Desactiver les notifications.\n");
+        printf("2. Notification toutes les X heures.\n");
+        printf("3. Retour.\n");
+        scanf("%d",&choix_notifs);
+        if (choix_notifs<1 || choix_notifs>3)
+        {
+          printf("Nombre incorrect.\n\n");
+          goto notifications;
+        }
+        else if (choix_notifs==3)
+        {
+          goto menu;
+        }
+        else if (choix_notifs==1)
+        {
+          printf("Les notifications sont maintenant desactivees.\n\n");
+          notifs_desactivee=1;
+          goto notifications;
+        }
+        else if (choix_notifs==2)
+        {
+          notifications_heure:
+          printf("Entrez l'heure voulue ( 1h minimun / 48h maximum ):\n");
+          scanf("%d",&choix_notifs_heures);
+          if (choix_notifs_heures>48 || choix_notifs_heures<1)
           {
             printf("Nombre incorrect.\n\n");
+            goto notifications_heure;
+          }
+          else
+          {
+            printf("Vous avez defini les notifications sur : toutes les %d heures.\n",choix_notifs_heures);
+            notifs_desactivee=0;
             goto notifications;
           }
-          else if (choix_notifs==3)
-          {
-            goto menu;
-          }
-          else if (choix_notifs==1)
-          {
-            printf("Les notifications sont maintenant desactivees.\n\n");
-            notifs_desactivee=1;
-            goto notifications;
-          }
-          else if (choix_notifs==2)
-          {
-            notifications_heure:
-            printf("Entrez l'heure voulue ( 1h minimun / 48h maximum ):\n");
-            scanf("%d",&choix_notifs_heures);
-            if (choix_notifs_heures>48 || choix_notifs_heures<1)
-            {
-              printf("Nombre incorrect.\n\n");
-              goto notifications_heure;
-            }
-            else
-            {
-              printf("Vous avez defini les notifications sur : toutes les %d heures.\n",choix_notifs_heures);
-              notifs_desactivee=0;
-              goto notifications;
-            }
-          }
-          break;
+        }
+        break;
         case 6:
-          contact: 
-          /* 5.0.CONTACT */     
-          printf("\e[0;33m=== CONTACT ===\e[0m\n\n");
-          printf("Un probleme ? Une erreur ? Une question ? Remplis ce formulaire pour nous contacter :\n");
-          scanf("%s",&probleme);
-          printf("Ton message a ete envoye !\n\n");
-          goto menu;
-          break;
-          case 7:
-          printf("À bientôt ! \n\n\n\n");
-          connected=0;
-          break;
+        contact:   
+        /* 5.0.CONTACT */   
+        printf("\e[0;33m=== CONTACT ===\e[0m\n\n");
+        printf("Un probleme ? Une erreur ? Une question ? Remplis ce formulaire pour nous contacter :\n");
+        scanf("%s",&probleme);
+        printf("Ton message a ete envoye !\n\n");
+        goto menu;
+        break;
+        case 7:
+        printf("À bientôt ! \n\n\n\n");
+        connected=0;
+        break;
         default:
-          printf("Vous n'avez pas rentre un nombre correct. Retour au menu.");
-          break;
+        printf("Vous n'avez pas rentre un nombre correct. Retour au menu.");
+        break;
       }
 
       printf("\n\n");
@@ -970,10 +972,5 @@ int main()
       printf("29. Aneth \n");
       printf("30. Pamplemoussier \n\n\n\n");
     }
-
-
-
-
-
 
 
