@@ -61,9 +61,9 @@ int main()
   // MYSQL set
   MYSQL conn;
 
-  char *server = "localhost";
-  char *user = "root";
-  char *password = ""; /* set me first */
+  char *server = "192.168.0.110";
+  char *user = "clement";
+  char *password = "toor!12"; /* set me first */
   char *database = "ConnectF";
 
   mysql_init(&conn);
@@ -152,8 +152,6 @@ int main()
                 strcpy(email, row[3]); 
                 strcpy(id_util, row[0]);
                 strcpy(date, row[4]);
-                // strcpy(date, row[4]); -> C'est pas un string dans la base donc erreur à corriger
-                printf("%s\n", row[8]);
                 if (row[8] > 0)
                 {
                   strcpy(plante, row[8]);
@@ -584,39 +582,50 @@ int main()
                   MYSQL_ROW row;
 
                   char buf[1024] = {}; 
-                sprintf(buf, "SELECT * FROM PLANTE WHERE ID_PLANTE=%s", plante); //Concatène avec les variables et return dans le buffer
+                  sprintf(buf, "SELECT * FROM PLANTE WHERE ID_PLANTE=%s", plante); //Concatène avec les variables et return dans le buffer
 
-                if (mysql_query(&conn,buf)) //Check si la requete est possible
-                {
-                  fprintf(stderr, "*£$£* - %s\n", mysql_error(&conn));
-                  exit(1);
-                }
-                res = mysql_use_result(&conn);
-                row = mysql_fetch_row(res);
+                  if (mysql_query(&conn,buf)) //Check si la requete est possible
+                  {
+                    fprintf(stderr, "*£$£* - %s\n", mysql_error(&conn));
+                    exit(1);
+                  }
+                  res = mysql_use_result(&conn);
+                  row = mysql_fetch_row(res);
 
-                printf("Vous avez une plante connectee : %s\n", row[1]);
-                printf("Caracteristiques actuelles :\n(affichage des caracteristiques + des besoins)\n");
-                printf("1. Changer de plante\n");
-                printf("2. Retour\n");
-                scanf("%d",&choix_menu);
-                if (choix_menu<1 && choix_menu>2){
-                  goto ma_plante;
-                }
-                else if (choix_menu==1){
-                  goto plante_choix;
-                }
-                else if (choix_menu==2){
-                  goto menu;
-                }
+                  printf("Vous avez une plante connectee : %s\n", row[1]);
 
-                /* Fermeture */
-                mysql_free_result(res);
-                mysql_close(&conn);
-              } 
-              else {
-                printf("Une erreur s'est produite lors de la connexion a la BDD!");
+                  mysql_free_result(res);
+
+                  if (mysql_query(&conn,"SELECT * FROM ETAT_PLANTE WHERE ID_ETAT_PLANTE=(SELECT MAX(ID_ETAT_PLANTE) FROM ETAT_PLANTE)")) //Check si la requete est possible
+                  {
+                    fprintf(stderr, "*£$£* - %s\n", mysql_error(&conn));
+                    exit(1);
+                  }
+                  res = mysql_use_result(&conn);
+                  row = mysql_fetch_row(res);
+
+                  printf("Caracteristiques actuelles :\nHumidité : %s\nLuminosité: %s\nTempérature: %s\nHumidité du sol: %s\n\n", row[0], row[1], row[2], row[3]);
+                  printf("1. Changer de plante\n");
+                  printf("2. Retour\n");
+                  scanf("%d",&choix_menu);
+                  if (choix_menu<1 && choix_menu>2){
+                    goto ma_plante;
+                  }
+                  else if (choix_menu==1){
+                    goto plante_choix;
+                  }
+                  else if (choix_menu==2){
+                    goto menu;
+                  }
+
+                  /* Fermeture */
+                  mysql_free_result(res);
+                  mysql_close(&conn);
+                } 
+                else {
+                  printf("Une erreur s'est produite lors de la connexion a la BDD!");
+                }
               }
-            }
 
 
             break;
