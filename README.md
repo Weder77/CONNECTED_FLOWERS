@@ -7,6 +7,7 @@
 
 ## General info
 
+![](photos/home.jpg)
 
 It is a school project designed over a year. The subject being imposed on us, here is what we did. The members of the group are : <br>
 &nbsp;&nbsp; - GRELET Théo <br />
