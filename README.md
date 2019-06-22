@@ -19,7 +19,7 @@ Returns made: <br />
 &nbsp; &nbsp; - Rendering 2 - February 28 : graphical interface, circulation in pages <br />
 &nbsp; &nbsp; - Rendering 3 - April 2 : Modeling <br />
 &nbsp; &nbsp; - Rendering 4 - May 3 : database + query <br />
-&nbsp; &nbsp; - Rendering 5 - June 4 : Finalizing applications
+&nbsp; &nbsp; - Rendering 5 - June 4 : Finalizing applications <br />
 &nbsp; &nbsp; - FINAL - June 24 : IoT
 
 
@@ -32,7 +32,7 @@ Project is created with:
 * Raspberry 3 B+
 
 	
-## Setup Unix / MacOS
+## Setup
 To run this project, you need to install mysql with brew.
 
 Brew installation ( ignore this step if you have already brew ) :
