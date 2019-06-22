@@ -604,7 +604,7 @@ int main()
                   res = mysql_use_result(&conn);
                   row = mysql_fetch_row(res);
 
-                  printf("Caracteristiques actuelles :\nHumidité : %s\nLuminosité: %s\nTempérature: %s\nHumidité du sol: %s\n\n", row[0], row[1], row[2], row[3]);
+                  printf("Caracteristiques actuelles :\nHumidité : %s%\nLuminosité: %s lumen\nTempérature: %s°C\nHumidité du sol: %s\n\n", row[1], row[2], row[3], row[4]);
                   printf("1. Changer de plante\n");
                   printf("2. Retour\n");
                   scanf("%d",&choix_menu);
@@ -612,15 +612,18 @@ int main()
                     goto ma_plante;
                   }
                   else if (choix_menu==1){
+                    /* Fermeture */
+                    mysql_free_result(res);
+                    mysql_close(&conn);
                     goto plante_choix;
                   }
                   else if (choix_menu==2){
+                    /* Fermeture */
+                    mysql_free_result(res);
+                    mysql_close(&conn);
                     goto menu;
                   }
 
-                  /* Fermeture */
-                  mysql_free_result(res);
-                  mysql_close(&conn);
                 } 
                 else {
                   printf("Une erreur s'est produite lors de la connexion a la BDD!");
@@ -630,8 +633,8 @@ int main()
 
             break;
             case 3:
-            printf("Voici l'historique de vos plantes :\n");
-            printf("(recupere depuis la bdd les plantes connectees -> affichage des noms des plantes\n");
+            printf("\033[1;33mBientôt disponible\033[0m\n");
+            system("sleep 3");
             goto menu;
             break;
             case 4:
@@ -809,7 +812,7 @@ int main()
                     printf("Température atmospherique : Entre %s et %s\n", row[8], row[7]);
                     printf("Luminosité : Entre %s et %s\n", row[4], row[3]);
                     printf("Humididé :  Entre %s et %s\n", row[6], row[4]);
-                    printf("Période de floraison : (A corriger psq les dates c chelou)\n");
+                    printf("Période de floraison : %s - %s\n", row[10], row[11]);
                     printf("\n");
 
                     printf("\n\n1. Suivre les etapes\n2. Retour\n");
