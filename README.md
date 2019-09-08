@@ -1,4 +1,4 @@
-# DEV Project - GROUPE N°07
+# DEV Project - GROUPE N°07 : CONNECTED FLOWERS
 
 ## Table of contents
 * [General info](#general-info)
@@ -62,7 +62,7 @@ $ exit
 Next, launch algo_plante.c 
 
 ```
-$ git clone https://github.com/Weder77/UF_DEV.git
+$ git clone https://github.com/Weder77/CONNECTED_FLOWERS.git
 $ cd UF_DEV
 $ cd algorithmique
 $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
